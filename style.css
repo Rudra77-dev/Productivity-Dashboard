@@ -1,0 +1,312 @@
+@font-face {
+    font-family: light;
+    src: url(fonnts.com-Aeonik-Regular.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: normal;
+    src: url(fonnts.com-Aeonik-Regular.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: bold;
+    src: url(fonnts.com-Aeonik-Bold.ttf);
+    font-weight: 700;
+}
+
+:root {
+    --pri: #F6F0D7;
+    --sec: #C5D89D;
+    --tri1: #9CAB84;
+    --tri2: #89986D;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+
+}
+
+#main {
+    height: 100%;
+    width: 100%;
+    background-color: var(--pri);
+}
+
+.nav {
+    height: 60px;
+    width: 100%;
+    background-color: var(--tri1);
+}
+
+section.allElem {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+    gap: 30px;
+    font-family: light;
+    font-weight: 300;
+    position: absolute;
+}
+
+.elem {
+    height: 400px;
+    width: 330px;
+    background-color: var(--sec);
+    border-radius: 10px;
+    transition: transform ease 0.2s;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+
+}
+
+.elem:active {
+    transform: scale(0.97);
+}
+
+.elem img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    font-size: 30px;
+}
+
+.elem h1 {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    color: white;
+
+}
+
+.fullElem {
+    height: 100%;
+    width: 100%;
+    background-color: var(--tri2);
+    display: none;
+    position: absolute;
+}
+
+.fullElem h2 {
+    font-family: bold;
+    font-weight: 700;
+    font-size: 55px;
+    padding: 20px 30px;
+    margin-top: 2%;
+    color: var(--pri);
+}
+
+.back {
+    font-family: bold;
+    font-size: 23px;
+    padding: 7px;
+    cursor: pointer;
+    color: #000000;
+    background-color: var(--sec);
+    border: none;
+    right: 5%;
+    position: absolute;
+    top: 7%;
+    border-radius: 7px;
+}
+
+.back:active {
+    transform: scale(0.97);
+    background-color: rgba(151, 149, 149, 0.845);
+
+}
+
+
+.todo-container {
+    display: flex;
+    height: calc(100% - 200px);
+    width: 100%;
+    padding: 50px;
+    gap: 20px;
+}
+
+.todo-container .left {
+    width: 33%;
+    background-color: var(--tri1);
+    border-radius: 10px;
+    /* align-items: center;
+    display: flex;
+    flex-direction: column; */
+}
+
+.todo-container .left form {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+
+
+.todo-container .right {
+    width: 67%;
+    background-color: var(--tri1);
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.todo-input {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0px;
+    border: none;
+    border-radius: 5px;
+    font-size: 25px;
+    margin-top: 10%;
+    background-color: var(--pri);
+}
+
+#textarea {
+    width: 100%;
+    height: 300px;
+    margin: 20px 0px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 25px;
+    resize: none;
+    font-family: normal;
+    background-color: var(--pri);
+}
+
+.add-btn {
+    padding: 10px 20px;
+    margin: 40px, 0px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--sec);
+    cursor: pointer;
+    font-size: 25px;
+    font-family: bold;
+}
+
+.add-btn:active {
+    transform: scale(0.97);
+}
+
+.mark-imp {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 25px;
+    font-family: normal;
+    width: 100%;
+    padding: 20px 0px;
+    margin-bottom: 20px;
+}
+
+.mark-imp #imp-checkbox {
+    scale: 1.8;
+}
+
+
+.task {
+    background-color: var(--pri);
+    margin: 25px;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: bold;
+
+}
+
+.task h4 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow: hidden;
+    width: 50rem;
+}
+
+.task h4 span {
+    background-color: red;
+    color: var(--pri);
+    padding: 4px 6px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-family: bold;
+
+}
+
+.task h4 span.true {
+    opacity: 1;
+}
+
+.task h4 span.false {
+    opacity: 0;
+}
+
+.task button {
+    padding: 7px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(102, 255, 112, 0.845);
+    cursor: pointer;
+    font-size: 20px;
+    font-family: bold;
+}
+
+.task button:active {
+    transform: scale(0.97);
+    background-color: rgba(151, 149, 149, 0.845);
+
+}
+
+.task .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+
+.details {
+    background-color: var(--sec);
+    margin: -15px 25px;
+    border-radius: 5px;
+    font-size: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: bold;
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0 20px;
+
+    transition: all 0.4s ease;
+}
+
+.details.active {
+    max-height: 200px;
+    /* content ke hisab se adjust karo */
+    opacity: 1;
+    padding: 20px;
+}
