@@ -1,18 +1,18 @@
 @font-face {
     font-family: light;
-    src: url(fonnts.com-Aeonik-Regular.ttf);
+    src: url("./fonnts.com-Aeonik-Regular.ttf") format("truetype");
     font-weight: 300;
 }
 
 @font-face {
     font-family: normal;
-    src: url(fonnts.com-Aeonik-Regular.ttf);
+    src: url("./fonnts.com-Aeonik-Regular.ttf") format("truetype");
     font-weight: 500;
 }
 
 @font-face {
     font-family: bold;
-    src: url(fonnts.com-Aeonik-Bold.ttf);
+    src: url("./fonnts.com-Aeonik-Bold.ttf") format("truetype");
     font-weight: 700;
 }
 
@@ -30,11 +30,16 @@
     box-sizing: border-box;
 }
 
-body,
-html {
+
+html,
+body {
     height: 100%;
     width: 100%;
 
+}
+
+body {
+    min-height: 100vh;
 }
 
 #main {
@@ -63,8 +68,8 @@ section.allElem {
 }
 
 .elem {
-    height: 400px;
-    width: 330px;
+    height: 330px;
+    width: 265px;
     background-color: var(--sec);
     border-radius: 10px;
     transition: transform ease 0.2s;
@@ -133,7 +138,7 @@ section.allElem {
 
 .todo-container {
     display: flex;
-    height: calc(100% - 200px);
+    height: calc(100% - 180px);
     width: 100%;
     padding: 50px;
     gap: 20px;
@@ -152,10 +157,8 @@ section.allElem {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 0px 30px;
 }
-
-
 
 .todo-container .right {
     width: 67%;
@@ -170,19 +173,19 @@ section.allElem {
     margin: 20px 0px;
     border: none;
     border-radius: 5px;
-    font-size: 25px;
+    font-size: 20px;
     margin-top: 10%;
     background-color: var(--pri);
 }
 
 #textarea {
     width: 100%;
-    height: 300px;
+    height: 280px;
     margin: 20px 0px;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    font-size: 25px;
+    font-size: 20px;
     resize: none;
     font-family: normal;
     background-color: var(--pri);
@@ -190,13 +193,13 @@ section.allElem {
 
 .add-btn {
     padding: 10px 20px;
-    margin: 40px, 0px;
+    margin: 20px, 0px;
     width: 100%;
     border: none;
     border-radius: 5px;
     background-color: var(--sec);
     cursor: pointer;
-    font-size: 25px;
+    font-size: 20px;
     font-family: bold;
 }
 
@@ -208,11 +211,11 @@ section.allElem {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 25px;
+    font-size: 17px;
     font-family: normal;
     width: 100%;
-    padding: 20px 0px;
-    margin-bottom: 20px;
+    padding: 10px 0px;
+    margin-bottom: 10px;
 }
 
 .mark-imp #imp-checkbox {
@@ -222,10 +225,10 @@ section.allElem {
 
 .task {
     background-color: var(--pri);
-    margin: 25px;
-    padding: 20px;
+    margin: 20px;
+    padding: 15px;
     border-radius: 5px;
-    font-size: 28px;
+    font-size: 23px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -238,7 +241,7 @@ section.allElem {
     align-items: center;
     gap: 6px;
     overflow: hidden;
-    width: 50rem;
+    width: 38rem;
 }
 
 .task h4 span {
@@ -265,7 +268,7 @@ section.allElem {
     border-radius: 5px;
     background-color: rgba(102, 255, 112, 0.845);
     cursor: pointer;
-    font-size: 20px;
+    font-size: 17px;
     font-family: bold;
 }
 
@@ -288,25 +291,154 @@ section.allElem {
 
 .details {
     background-color: var(--sec);
-    margin: -15px 25px;
+    margin: -10px 20px;
     border-radius: 5px;
-    font-size: 28px;
+    font-size: 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: bold;
-
+    font-family: light;
     max-height: 0;
     overflow: hidden;
     opacity: 0;
     padding: 0 20px;
-
+    color: #292828;
     transition: all 0.4s ease;
 }
 
 .details.active {
-    max-height: 200px;
+    max-height: 170px;
     /* content ke hisab se adjust karo */
     opacity: 1;
     padding: 20px;
+}
+
+.daily-fullpage h2 {
+    font-size: 50px;
+}
+
+.daily-fullpage .daily-container {
+    background-color: var(--tri1);
+    height: 75%;
+    margin-top: 40px;
+    width: 95%;
+    border-radius: 10px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    overflow: auto;
+    justify-content: space-between;
+    margin-left: 35px;
+}
+
+.daily-fullpage .daily-container .input-section {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 49%;
+    margin-bottom: 15px;
+}
+
+.daily-fullpage .daily-container .input-section p {
+    position: absolute;
+    top: 10%;
+    left: 2%;
+    font-size: 18px;
+}
+
+.daily-container .input-section input {
+    padding: 20px 45px;
+    width: 100%;
+    background-color: var(--sec);
+    border-radius: 5px;
+    border: none;
+    font-size: 32px;
+    padding-top: 34px;
+    outline: none;
+}
+
+.moti-fullpage .motivation-container {
+    height: 500px;
+    width: 60%;
+    position: absolute;
+    border-radius: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.moti-fullpage .motivation-container::after {
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: var(--pri);
+    border-radius: 50px;
+    scale: 1.15;
+    filter: blur(150px);
+    z-index: 8;
+}
+
+.motivation-container .motivation-wrapper {
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+    background-color: var(--tri1);
+    padding: 17px;
+    border-radius: 30px;
+    border: 10px solid var(--sec);
+}
+
+.motivation-container .motivation-wrapper img {
+    height: 80px;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    opacity: 0.3;
+}
+
+.motivation-1 {
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.motivation-1 h1 {
+    background-color: var(--sec);
+    padding: 30px;
+    border-radius: 20px;
+    font-size: 40px;
+    font-family: bold;
+}
+
+.quote {
+    padding: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.quote h1 {
+    font-size: 45px;
+    font-family: bold;
+    color: black;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+
+.author h3 {
+    margin-top: 30px;
+    font-size: 40px;
+    font-family: normal;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: var(--sec);
+    width: fit-content;
+    text-align: right;
 }

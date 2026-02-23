@@ -4,11 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link
-  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
-  rel="stylesheet"/>
+    <title>Productivity Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -42,15 +40,15 @@
             <h2>Your Personalized Task List</h2>
             <div class="todo-container">
                 <div class="left">
-                   <form>
-                     <input type="text" class="todo-input" placeholder="Add a new task..." required>
-                    <textarea placeholder="Add a description" id="textarea"></textarea>
-                    <div class="mark-imp">
-                        <input type="checkbox" id="imp-checkbox">
-                        <label for="imp-checkbox">Mark as Important</label>
-                    </div>
-                    <button class="add-btn">Add Task</button>
-                   </form>
+                    <form>
+                        <input type="text" class="todo-input" placeholder="Add a new task..." required>
+                        <textarea placeholder="Add a description" id="textarea"></textarea>
+                        <div class="mark-imp">
+                            <input type="checkbox" id="imp-checkbox">
+                            <label for="imp-checkbox">Mark as Important</label>
+                        </div>
+                        <button class="add-btn">Add Task</button>
+                    </form>
                 </div>
                 <div class="right">
                     <!-- <div class="task"><h4>gym jao</h4>
@@ -62,26 +60,44 @@
                     <div class="task">gym jao
                         <button type="button">mark as complete</button>
                 </div> -->
+                </div>
+        </section>
+        <section class="fullElem daily-fullpage">
+            <button class="back" id="1">close</button>
+            <h2>Daily Planner</h2>
+            <div class="daily-container">
+            </div>
+        </section>
+        <section class="fullElem moti-fullpage">
+            <button class="back" id="2">close</button>
+            <h2>Motivation Quote</h2>
+            <div class="motivation-container">
+
+                <div class="motivation-wrapper">
+                    <img src="icons8-quote-100 (1).png" alt="">
+                    <div class="motivation-1">
+                        <h1>Quote of the day</h1>
+                    </div>
+                    <div class="quote">
+                        <h1></h1>
+                    </div>
+                    <div class="author">
+                        <h3></h3>
+                    </div>
+
+                </div>
             </div>
         </section>
         <section class="fullElem">
-            <button class="back" id="1">close</button>
-             <h2>Daily Planner</h2>
-        </section>
-        <section class="fullElem">
-            <button class="back" id="2">close</button>
-             <h2>Motivation Quote</h2>
-        </section>
-        <section class="fullElem">
             <button class="back" id="3">close</button>
-             <h2>Pomodoro Timer</h2>
+            <h2>Pomodoro Timer</h2>
         </section>
         <section class="fullElem">
             <button class="back" id="4">close</button>
-             <h2>Daily Goals</h2>
+            <h2>Daily Goals</h2>
         </section>
     </div>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>

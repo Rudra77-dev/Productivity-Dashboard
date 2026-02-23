@@ -83,4 +83,48 @@ function todoList() {
 }
 todoList();
 
+function dailyPlanner() {
+    var dailyContainer =  document.querySelector(".daily-container");
+
+var daiyPlanData = JSON.parse(localStorage.getItem("dailyPlanData")) || {};
+
+var hours = Array.from({length: 18}, (_,idx) =>`${6 + idx}:00 - ${7+idx}:00`)
+
+var wholeDaySum = "";
+
+hours.forEach(function (elem, idx) {
+    var saveData = daiyPlanData[idx] || "";
+    wholeDaySum = wholeDaySum + `<div class="input-section">
+                        <p>${elem}</p>
+                     <input id="${idx}" value="${saveData}" type="text" placeholder="..." value="${saveData}" required>
+                </div>`;
+});
+
+dailyContainer.innerHTML = wholeDaySum;
+
+var allInput = document.querySelectorAll(".input-section input")
+
+allInput.forEach(function (elem) {
+    elem.addEventListener('input', function () {
+            daiyPlanData[elem.id] = elem.value;
+
+        localStorage.setItem("dailyPlanData", JSON.stringify(daiyPlanData));
+    })
+    });
+}
+dailyPlanner();
+
+function motivationQuote() {
+    var motivationQuotes = document.querySelector(".quote h1");
+var motivationAuthors = document.querySelector(".author h3");
+async function fetchQuote() {
+    let response = await fetch("https://dummyjson.com/quotes/random");
+    let data = await response.json();
+        motivationQuotes.innerHTML = data.quote
+        motivationAuthors.innerHTML = `~${data.author}`;   
+}
+fetchQuote();
+}
+motivationQuote();
+
 
