@@ -14,7 +14,7 @@ function openfeature() {
         });
     });
 }
-openfeature();
+// openfeature();
 
 
 function todoList() {
@@ -42,12 +42,12 @@ function todoList() {
         allTask.innerHTML = sum;
         localStorage.setItem("tasks", JSON.stringify(currentTask));
 
-      document.querySelectorAll(".task .arrow").forEach(function (arrow, idx) {
-    arrow.addEventListener('click', function () {
-        let details = document.querySelectorAll(".details")[idx];
-        details.classList.toggle("active");
-    });
-});
+        document.querySelectorAll(".task .arrow").forEach(function (arrow, idx) {
+            arrow.addEventListener('click', function () {
+                let details = document.querySelectorAll(".details")[idx];
+                details.classList.toggle("active");
+            });
+        });
 
         document.querySelectorAll(".task button").forEach(function (btn) {
             btn.addEventListener('click', function () {
@@ -70,7 +70,7 @@ function todoList() {
             important: importantCheckbox.checked,
             details: detailsInput.value
         });
-        
+
         renderTasks()
 
         taskInput.value = "";
@@ -81,50 +81,88 @@ function todoList() {
 
 
 }
-todoList();
+// todoList();
 
 function dailyPlanner() {
-    var dailyContainer =  document.querySelector(".daily-container");
+    var dailyContainer = document.querySelector(".daily-container");
 
-var daiyPlanData = JSON.parse(localStorage.getItem("dailyPlanData")) || {};
+    var daiyPlanData = JSON.parse(localStorage.getItem("dailyPlanData")) || {};
 
-var hours = Array.from({length: 18}, (_,idx) =>`${6 + idx}:00 - ${7+idx}:00`)
+    var hours = Array.from({ length: 18 }, (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`)
 
-var wholeDaySum = "";
+    var wholeDaySum = "";
 
-hours.forEach(function (elem, idx) {
-    var saveData = daiyPlanData[idx] || "";
-    wholeDaySum = wholeDaySum + `<div class="input-section">
+    hours.forEach(function (elem, idx) {
+        var saveData = daiyPlanData[idx] || "";
+        wholeDaySum = wholeDaySum + `<div class="input-section">
                         <p>${elem}</p>
                      <input id="${idx}" value="${saveData}" type="text" placeholder="..." value="${saveData}" required>
                 </div>`;
-});
+    });
 
-dailyContainer.innerHTML = wholeDaySum;
+    dailyContainer.innerHTML = wholeDaySum;
 
-var allInput = document.querySelectorAll(".input-section input")
+    var allInput = document.querySelectorAll(".input-section input")
 
-allInput.forEach(function (elem) {
-    elem.addEventListener('input', function () {
+    allInput.forEach(function (elem) {
+        elem.addEventListener('input', function () {
             daiyPlanData[elem.id] = elem.value;
 
-        localStorage.setItem("dailyPlanData", JSON.stringify(daiyPlanData));
-    })
+            localStorage.setItem("dailyPlanData", JSON.stringify(daiyPlanData));
+        })
     });
 }
-dailyPlanner();
+// dailyPlanner();
 
 function motivationQuote() {
     var motivationQuotes = document.querySelector(".quote h1");
-var motivationAuthors = document.querySelector(".author h3");
-async function fetchQuote() {
-    let response = await fetch("https://dummyjson.com/quotes/random");
-    let data = await response.json();
+    var motivationAuthors = document.querySelector(".author h3");
+    async function fetchQuote() {
+        let response = await fetch("https://dummyjson.com/quotes/random");
+        let data = await response.json();
         motivationQuotes.innerHTML = data.quote
-        motivationAuthors.innerHTML = `~${data.author}`;   
+        motivationAuthors.innerHTML = `~${data.author}`;
+    }
+    fetchQuote();
 }
-fetchQuote();
+// motivationQuote();
+
+let totalSeconds = 25 * 60; // 25 minutes
+var currentTime = document.querySelector(".pomo-timer h1");
+var startBtn = document.getElementById("start");
+var pauseBtn = document.getElementById("pause");
+var resetBtn = document.getElementById("reset");
+var timerInterval = null;
+
+function updateTimer() {
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds % 60;
+    currentTime.innerHTML = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
-motivationQuote();
 
+function startTimer() {
+     clearInterval(timerInterval);
+   
+        if (totalSeconds > 0) {
+             timerInterval = setInterval(function () {
+            totalSeconds--;
+            updateTimer();
+        },1000);
+    }
+        else {
+            clearInterval(timerInterval);
+        }
+    }
 
+function pauseTimer() {
+    clearInterval(timerInterval);
+}
+function resetTimer() {
+    totalSeconds = 25 * 60;
+    clearInterval(timerInterval);
+    updateTimer();
+}
+
+startBtn.addEventListener('click', startTimer);
+pauseBtn.addEventListener('click', pauseTimer);
+resetBtn.addEventListener('click', resetTimer);

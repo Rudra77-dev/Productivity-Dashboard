@@ -384,7 +384,7 @@ section.allElem {
     z-index: 10;
     position: absolute;
     width: 100%;
-    background-color: var(--tri1);
+    background-color: var(--pri);
     padding: 17px;
     border-radius: 30px;
     border: 10px solid var(--sec);
@@ -407,16 +407,16 @@ section.allElem {
 
 .motivation-1 h1 {
     background-color: var(--sec);
-    padding: 30px;
+    padding: 20px;
     border-radius: 20px;
     font-size: 40px;
     font-family: bold;
 }
 
 .quote {
-    padding: 30px;
-    margin-top: 40px;
-    margin-bottom: 40px;
+    padding: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .quote h1 {
@@ -436,9 +436,47 @@ section.allElem {
     margin-top: 30px;
     font-size: 40px;
     font-family: normal;
-    padding: 30px;
+    padding: 20px;
     border-radius: 20px;
     background-color: var(--sec);
     width: fit-content;
     text-align: right;
+}
+
+.pomo-fullpage {
+    display: block;}
+
+.fullElem .pomo-fullpage h2 {
+    font-size: 50px;}
+
+.pomo-fullpage .pomo-timer {
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.pomo-fullpage .pomo-timer h1 {
+color: var(--pri);
+    font-size: 150px;
+    font-family: bold;
+    margin-bottom: 30px;
+}
+
+.pomo-fullpage .pomo-timer button {
+    padding: 10px 30px;
+    margin: 0px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--sec);
+    cursor: pointer;
+    font-size: 20px;
+    font-family: bold;
+    box-shadow: 6px 6px 5px rgba(0, 0, 0, 1.1);   
+}
+
+.pomo-fullpage .pomo-timer button:active {
+    transition: transform 0.1s ease;
+    transform: scale(0.97);
 }
