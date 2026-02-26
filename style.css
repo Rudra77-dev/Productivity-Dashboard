@@ -443,11 +443,9 @@ section.allElem {
     text-align: right;
 }
 
-.pomo-fullpage {
-    display: block;}
-
 .fullElem .pomo-fullpage h2 {
-    font-size: 50px;}
+    font-size: 50px;
+}
 
 .pomo-fullpage .pomo-timer {
     top: 50%;
@@ -458,7 +456,7 @@ section.allElem {
 }
 
 .pomo-fullpage .pomo-timer h1 {
-color: var(--pri);
+    color: var(--pri);
     font-size: 150px;
     font-family: bold;
     margin-bottom: 30px;
@@ -473,10 +471,21 @@ color: var(--pri);
     cursor: pointer;
     font-size: 20px;
     font-family: bold;
-    box-shadow: 6px 6px 5px rgba(0, 0, 0, 1.1);   
+    box-shadow: 6px 6px 5px rgba(0, 0, 0, 1.1);
 }
 
 .pomo-fullpage .pomo-timer button:active {
     transition: transform 0.1s ease;
     transform: scale(0.97);
+}
+
+.pomo-fullpage .session {
+    font-size: 30px;
+    position: absolute;
+    margin-bottom: 20px;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding: 12px 20px;
+    border-radius: 10px;
 }

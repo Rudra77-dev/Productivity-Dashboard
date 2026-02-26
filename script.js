@@ -14,7 +14,7 @@ function openfeature() {
         });
     });
 }
-// openfeature();
+openfeature();
 
 
 function todoList() {
@@ -81,7 +81,7 @@ function todoList() {
 
 
 }
-// todoList();
+todoList();
 
 function dailyPlanner() {
     var dailyContainer = document.querySelector(".daily-container");
@@ -112,7 +112,7 @@ function dailyPlanner() {
         })
     });
 }
-// dailyPlanner();
+dailyPlanner();
 
 function motivationQuote() {
     var motivationQuotes = document.querySelector(".quote h1");
@@ -125,44 +125,77 @@ function motivationQuote() {
     }
     fetchQuote();
 }
-// motivationQuote();
+motivationQuote();
 
-let totalSeconds = 25 * 60; // 25 minutes
+function pomodoro() {
+    let totalSeconds = 25 * 60;
 var currentTime = document.querySelector(".pomo-timer h1");
 var startBtn = document.getElementById("start");
 var pauseBtn = document.getElementById("pause");
 var resetBtn = document.getElementById("reset");
+var session = document.querySelector(".pomo-fullpage h4");
+
 var timerInterval = null;
+var isWorkSession = true;
 
 function updateTimer() {
     let minutes = Math.floor(totalSeconds / 60);
     let seconds = totalSeconds % 60;
-    currentTime.innerHTML = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    currentTime.innerHTML =
+        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 }
 
 function startTimer() {
-     clearInterval(timerInterval);
-   
+
+    if (timerInterval) return; // prevent multiple intervals
+
+    timerInterval = setInterval(function () {
+
         if (totalSeconds > 0) {
-             timerInterval = setInterval(function () {
             totalSeconds--;
             updateTimer();
-        },1000);
-    }
-        else {
+        } else {
             clearInterval(timerInterval);
+            timerInterval = null;
+
+            if (isWorkSession) {
+                isWorkSession = false;
+                totalSeconds = 5 * 60;
+                session.innerHTML = "Take a break.";
+                session.style.backgroundColor = "#4CAF50";
+            } else {
+                isWorkSession = true;
+                totalSeconds = 25 * 60;
+                session.innerHTML = "Back to Work!";
+                session.style.backgroundColor = "#f44336";
+            }
+
+            updateTimer();
         }
-    }
+
+    }, 10); // 1 second
+}
 
 function pauseTimer() {
     clearInterval(timerInterval);
+    timerInterval = null;
 }
+
 function resetTimer() {
-    totalSeconds = 25 * 60;
     clearInterval(timerInterval);
+    timerInterval = null;
+    isWorkSession = true;
+    totalSeconds = 25 * 60;
+    session.innerHTML = "Focus Time";
+    session.style.backgroundColor = "#f44336";
     updateTimer();
 }
 
 startBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', pauseTimer);
 resetBtn.addEventListener('click', resetTimer);
+
+updateTimer();
+}
+
+pomodoro();
