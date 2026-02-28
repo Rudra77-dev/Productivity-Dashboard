@@ -129,73 +129,149 @@ motivationQuote();
 
 function pomodoro() {
     let totalSeconds = 25 * 60;
-var currentTime = document.querySelector(".pomo-timer h1");
-var startBtn = document.getElementById("start");
-var pauseBtn = document.getElementById("pause");
-var resetBtn = document.getElementById("reset");
-var session = document.querySelector(".pomo-fullpage h4");
+    var currentTime = document.querySelector(".pomo-timer h1");
+    var startBtn = document.getElementById("start");
+    var pauseBtn = document.getElementById("pause");
+    var resetBtn = document.getElementById("reset");
+    var session = document.querySelector(".pomo-fullpage h4");
 
-var timerInterval = null;
-var isWorkSession = true;
+    var timerInterval = null;
+    var isWorkSession = true;
 
-function updateTimer() {
-    let minutes = Math.floor(totalSeconds / 60);
-    let seconds = totalSeconds % 60;
-    currentTime.innerHTML =
-        `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-}
+    function updateTimer() {
+        let minutes = Math.floor(totalSeconds / 60);
+        let seconds = totalSeconds % 60;
+        currentTime.innerHTML =
+            `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
 
-function startTimer() {
+    function startTimer() {
 
-    if (timerInterval) return; // prevent multiple intervals
+        if (timerInterval) return; // prevent multiple intervals
 
-    timerInterval = setInterval(function () {
+        timerInterval = setInterval(function () {
 
-        if (totalSeconds > 0) {
-            totalSeconds--;
-            updateTimer();
-        } else {
-            clearInterval(timerInterval);
-            timerInterval = null;
-
-            if (isWorkSession) {
-                isWorkSession = false;
-                totalSeconds = 5 * 60;
-                session.innerHTML = "Take a break.";
-                session.style.backgroundColor = "#4CAF50";
+            if (totalSeconds > 0) {
+                totalSeconds--;
+                updateTimer();
             } else {
-                isWorkSession = true;
-                totalSeconds = 25 * 60;
-                session.innerHTML = "Back to Work!";
-                session.style.backgroundColor = "#f44336";
+                clearInterval(timerInterval);
+                timerInterval = null;
+
+                if (isWorkSession) {
+                    isWorkSession = false;
+                    totalSeconds = 5 * 60;
+                    session.innerHTML = "Take a break.";
+                    session.style.backgroundColor = "#2d97ef";
+                } else {
+                    isWorkSession = true;
+                    totalSeconds = 25 * 60;
+                    session.innerHTML = "Work Session";
+                    session.style.backgroundColor = "#36fc71";
+                }
+
+                updateTimer();
             }
 
-            updateTimer();
-        }
+        }, 10); // 1 second
+    }
 
-    }, 10); // 1 second
-}
+    function pauseTimer() {
+        clearInterval(timerInterval);
+        timerInterval = null;
+    }
 
-function pauseTimer() {
-    clearInterval(timerInterval);
-    timerInterval = null;
-}
+    function resetTimer() {
+        clearInterval(timerInterval);
+        timerInterval = null;
+        isWorkSession = true;
+        totalSeconds = 25 * 60;
 
-function resetTimer() {
-    clearInterval(timerInterval);
-    timerInterval = null;
-    isWorkSession = true;
-    totalSeconds = 25 * 60;
-    session.innerHTML = "Focus Time";
-    session.style.backgroundColor = "#f44336";
+        updateTimer();
+    }
+
+    startBtn.addEventListener('click', startTimer);
+    pauseBtn.addEventListener('click', pauseTimer);
+    resetBtn.addEventListener('click', resetTimer);
+
     updateTimer();
 }
 
-startBtn.addEventListener('click', startTimer);
-pauseBtn.addEventListener('click', pauseTimer);
-resetBtn.addEventListener('click', resetTimer);
+pomodoro();
 
-updateTimer();
+function dailyGoalsDashboard() {
+
+    let goalsData = JSON.parse(localStorage.getItem("dailyGoals")) || [];
+
+    const goalsRight = document.querySelector(".goals-right");
+    const totalSpan = document.querySelector(".total-goals");
+    const completedSpan = document.querySelector(".completed-goals");
+    const pendingSpan = document.querySelector(".pending-goals");
+    const circle = document.querySelector(".circle-progress");
+    const percentText = document.querySelector(".percent");
+    const addBtn = document.querySelector(".goal-add-btn");
+    const input = document.querySelector(".goal-input");
+
+    function renderGoals() {
+
+        let completed = goalsData.filter(g => g.done).length;
+        let total = goalsData.length;
+        let pending = total - completed;
+        let percent;
+        if (total === 0) {
+            percent = 0;
+        } else {
+            percent = Math.round((completed / total) * 100);
+        }
+
+        totalSpan.textContent = total;
+        completedSpan.textContent = completed;
+        pendingSpan.textContent = pending;
+        percentText.textContent = percent + "% ";
+        circle.style.background =
+            `conic-gradient(var(--tri2) ${percent * 3.6}deg, #ddddddf8 0deg)`;
+
+        let sum = "";
+
+        goalsData.forEach((goal, idx) => {
+            sum += `
+                <div class="goal-card ${goal.done ? "done" : ""}">
+                    <p>${goal.text}</p>
+                    <div>
+                        <button class="goal-complete" data-id="${idx}">✔</button>
+                        <button class="goal-delete" data-id="${idx}">✖</button>
+                    </div>
+                </div>` 
+        });
+
+        goalsRight.innerHTML = sum;
+
+        localStorage.setItem("dailyGoals", JSON.stringify(goalsData));
+
+        document.querySelectorAll(".goal-complete").forEach(btn => {
+            btn.addEventListener("click", () => {
+                goalsData[btn.dataset.id].done = !goalsData[btn.dataset.id].done;
+                renderGoals();
+            });
+        });
+
+        document.querySelectorAll(".goal-delete").forEach(btn => {
+            btn.addEventListener("click", () => {
+                goalsData.splice(btn.dataset.id, 1);
+                renderGoals();
+            });
+        });
+    }
+
+    addBtn.addEventListener("click", () => {
+        if (input.value.trim() !== "") {
+            goalsData.push({ text: input.value, done: false });
+            input.value = "";
+            renderGoals();
+        }
+    });
+
+    renderGoals();
 }
 
-pomodoro();
+dailyGoalsDashboard();
