@@ -11,29 +11,54 @@
 
 <body>
     <div id="main">
-        <nav></nav>
         <section class="allElem">
-            <div class="todo elem" id="0">
-                <img src="https://i.pinimg.com/736x/e7/f6/9a/e7f69a8643c253b1b7587c162948f392.jpg" alt="" srcset="">
+                <nav>
+                <div class="nav-in">
+                    <h1>Productivity Dashboard</h1>
+                    <div class="theme-toggle">
+                        <i class="ri-sun-line" id="light-mode"></i>
+                        <i class="ri-moon-line" id="dark-mode"></i>
+                        
+                    </div>
+                </div>
+        </nav>
+            <header>
+            <div class="header1">
+                <h3>28 February 2026</h3>
+                <h1>saturday, 1:00pm</h1>
+                <h2>Burhanpur</h2>
+            </div>
+            <div class="header2">
+                <h1>29°C</h1>
+                <h2>humidity: 49%</h2>
+                <h3>wind: 10km/h</h3>
+                <h4>weather</h4>
+                <h5>light rain</h5>
+            </div>
+           </header>
+          <div class="allFeatures">
+              <div class="todo elem" id="0">
+                <img src="https://i.pinimg.com/736x/c4/0a/02/c40a02e1217153acc5b7b620fa94499c.jpg" alt="" srcset="">
                 <h1>Todo List</h1>
             </div>
             <div class="daily elem" id="1">
-                <img src="https://i.pinimg.com/736x/34/57/d9/3457d93fa8b0e117b1c5faf9c6599315.jpg" alt="" srcset="">
+                <img src="https://i.pinimg.com/1200x/a9/a6/ad/a9a6adfa4646bef35bb13338cae4f0e6.jpg" alt="" srcset="">
                 <h1>Day Planner</h1>
             </div>
             <div class="moti elem" id="2">
-                <img src="https://i.pinimg.com/736x/b3/46/c5/b346c5577d094b21df6248aaa111ae48.jpg" alt="" srcset="">
+                <img src="https://i.pinimg.com/736x/3b/b6/0f/3bb60ff593d9db5d5d81731bfaaba254.jpg" alt="" srcset="">
                 <h1>Motivation</h1>
             </div>
             <div class="pomo elem" id="3">
-                <img src="https://i.pinimg.com/736x/c2/95/13/c2951364b21242862b80720503c9ad47.jpg" alt="" srcset="">
+                <img src="https://i.pinimg.com/736x/62/b9/d6/62b9d6c622b856596c9a02eb472c0600.jpg" alt="" srcset="">
                 <h1>Pomodoro Timer</h1>
             </div>
             <div class="goals elem" id="4">
-                <img src="https://i.pinimg.com/736x/e8/5d/6e/e85d6e621d5c2a31210b1e6b41888703.jpg" alt="" srcset="">
+                <img src="https://i.pinimg.com/736x/37/fb/bd/37fbbdfe313c066dff5e1f50cb828bc6.jpg" alt="" srcset="">
 
                 <h1>Daily Goals</h1>
             </div>
+          </div>
         </section>
         <section class="fullElem todo-fullpage">
             <button class="back" id="0">close</button>
@@ -92,7 +117,7 @@
             <h2>Pomodoro Timer</h2>
             <h4 class="session"></h4>
             <div class="pomo-timer">
-                
+
                 <h1 id="time">25:00</h1>
                 <button id="start">Start</button>
                 <button id="pause">Pause</button>
@@ -102,28 +127,26 @@
         <section class="fullElem goals-fullpage">
             <button class="back" id="4">close</button>
             <h2>Daily Goals</h2>
-             <div class="goals-container">
-        <div class="goals-left">
-            <h3>Statistics</h3>
-            <div class="state">
-                <p>Total Goals: <span class="total-goals">0</span></p>
-            <p>Completed: <span class="completed-goals">0</span></p>
-            <p>Pending: <span class="pending-goals">0</span></p>
+            <div class="goals-container">
+                <div class="goals-left">
+                    <h3>Statistics</h3>
+                    <div class="state">
+                        <p>Total Goals: <span class="total-goals">0</span></p>
+                        <p>Completed: <span class="completed-goals">0</span></p>
+                        <p>Pending: <span class="pending-goals">0</span></p>
+                    </div>
+
+                    <div class="circle-progress">
+                        <div class="circle-inner">
+                            <span class="percent">0%</span>
+                        </div>
+                    </div>
+                    <input type="text" class="goal-input" placeholder="Add new goal">
+                    <button class="goal-add-btn">Add Goal</button>
+                </div>
+
+                <div class="goals-right"></div>
             </div>
-
-            <div class="circle-progress">
-    <div class="circle-inner">
-        <span class="percent">0%</span>
-    </div>
-</div>
-           
-
-            <input type="text" class="goal-input" placeholder="Add new goal">
-            <button class="goal-add-btn">Add Goal</button>
-        </div>
-
-        <div class="goals-right"></div>
-    </div>
         </section>
     </div>
     <script src="./script.js"></script>

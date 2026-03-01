@@ -1,8 +1,10 @@
-let allElem = document.querySelectorAll(".elem");
+
+function openfeature() {
+    let allElem = document.querySelectorAll(".elem");
 let allfullpage = document.querySelectorAll(".fullElem");
 let allfullpageback = document.querySelectorAll(".back");
 
-function openfeature() {
+
     allElem.forEach(function (elem) {
         elem.addEventListener('click', function () {
             allfullpage[elem.id].style.display = "block";
@@ -196,7 +198,6 @@ function pomodoro() {
 
     updateTimer();
 }
-
 pomodoro();
 
 function dailyGoalsDashboard() {
@@ -211,9 +212,9 @@ function dailyGoalsDashboard() {
     const percentText = document.querySelector(".percent");
     const addBtn = document.querySelector(".goal-add-btn");
     const input = document.querySelector(".goal-input");
+    
 
     function renderGoals() {
-
         let completed = goalsData.filter(g => g.done).length;
         let total = goalsData.length;
         let pending = total - completed;
@@ -241,7 +242,7 @@ function dailyGoalsDashboard() {
                         <button class="goal-complete" data-id="${idx}">✔</button>
                         <button class="goal-delete" data-id="${idx}">✖</button>
                     </div>
-                </div>` 
+                </div>`
         });
 
         goalsRight.innerHTML = sum;
@@ -273,5 +274,117 @@ function dailyGoalsDashboard() {
 
     renderGoals();
 }
-
 dailyGoalsDashboard();
+
+function header(){
+    var key = "375132970db642d9b8e81221262802";
+var city = "Burhanpur";
+
+
+let temp = document.querySelector(".header2 h1")
+let humidity = document.querySelector(".header2 h2")
+let wind = document.querySelector(".header2 h3")
+let weather = document.querySelector(".header2 h4")
+let weatherDesc = document.querySelector(".header2 h5")
+
+
+async function weatherfnc() {
+    let response = await fetch(" https://api.weatherapi.com/v1/current.json?key=" + key + "&q=" + city);
+    let weatherdata = await response.json();
+    temp.innerHTML = weatherdata.current.temp_c + "°C";
+    humidity.innerHTML = "Humidity: " + weatherdata.current.humidity + "%";
+    wind.innerHTML = "Wind: " + weatherdata.current.wind_kph + " kph";
+    weather.innerHTML = weatherdata.current.condition.text;
+    weatherDesc.innerHTML = `<img src="${weatherdata.current.condition.icon}" alt="Weather Icon">`;
+}
+weatherfnc();
+
+function timedate() {
+        const header = document.querySelector("header");
+
+    const totodayDaysOfweek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const now = new Date();
+    const dayOfWeek = totodayDaysOfweek[now.getDay()];
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const date = now.getDate();
+    const month = now.toLocaleString('default', { month: 'long' });
+    const year = now.getFullYear();
+    document.querySelector(".header1 h3").textContent = ` ${date} ${month} ${year}`;
+
+    if (hours > 12) {
+        document.querySelector(".header1 h1").textContent = `${dayOfWeek}, ${hours - 12}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} PM`;
+    } else {
+        document.querySelector(".header1 h1").textContent = `${dayOfWeek},${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} AM`;
+    }
+
+     if (hours >= 6 && hours < 18) {
+        header.style.backgroundImage =
+            "url('https://images.unsplash.com/photo-1502082553048-f009c37129b9')";
+     }
+    else if (hours >= 18 && hours < 20) {
+        header.style.backgroundImage =
+            "url('https://images.unsplash.com/photo-1681281258770-2d85d18672e8?q=80&w=1529&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')";
+    }
+     
+    else{
+        header.style.backgroundImage =
+        "url('https://images.unsplash.com/photo-1576037790350-89c26155ee0d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')";
+    }
+
+    header.style.backgroundSize = "cover";
+    header.style.backgroundPosition = "center";
+}
+setInterval(() => {
+    timedate();
+}, 1000);
+
+function themeToggle() {
+
+    const lightBtn = document.getElementById("light-mode"); 
+    const darkBtn = document.getElementById("dark-mode");   
+    const root = document.documentElement;
+
+    function setLightMode() {
+        root.style.setProperty("--pri", "#F6F0D7");
+        root.style.setProperty("--sec", "#C5D89D");
+        root.style.setProperty("--tri1", "#9CAB84");
+        root.style.setProperty("--tri2", "#89986D");
+
+        localStorage.setItem("theme", "light");
+        lightBtn.classList.remove("active");
+        darkBtn.classList.add("active");
+
+    }
+
+    function setDarkMode() {
+        root.style.setProperty("--pri", "#65747b");
+        root.style.setProperty("--sec", "#4c5e67");
+        root.style.setProperty("--tri1", "#334753");
+        root.style.setProperty("--tri2", "#1a313f");
+
+        localStorage.setItem("theme", "dark");
+
+        darkBtn.classList.remove("active");
+        lightBtn.classList.add("active");
+     
+        lightBtn.classList.add("rotate");
+    setTimeout(() => lightBtn.classList.remove("rotate"), 360);
+        
+    }
+
+    if (localStorage.getItem("theme") === "dark") {
+        setDarkMode();
+    } else {
+        setLightMode();
+    }
+
+    lightBtn.addEventListener("click", setLightMode);
+    darkBtn.addEventListener("click", setDarkMode);
+    
+}
+
+themeToggle();
+}
+header();
