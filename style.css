@@ -715,3 +715,39 @@ section.allElem {
 .rotate {
     transform: rotate(360deg);
 }
+
+@media screen and (max-width: 768px) {
+    .nav-in {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .header1 h1 {
+        font-size: 40px;
+    }
+
+    .header1 h2 {
+        font-size: 25px;
+    }
+
+    .header1 h3 {
+        font-size: 15px;
+    }
+
+    .elem {
+        width: 100%;
+    }
+
+    .todo-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .todo-container .left,
+    .todo-container .right {
+        width: 100%;
+    }
+    
+}
