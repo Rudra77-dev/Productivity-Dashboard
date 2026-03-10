@@ -716,38 +716,183 @@ section.allElem {
     transform: rotate(360deg);
 }
 
-@media screen and (max-width: 768px) {
-    .nav-in {
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
-        gap: 10px;
+
+@media (max-width: 1024px) {
+
+    section.allElem{
+        padding:20px;
     }
 
-    .header1 h1 {
-        font-size: 40px;
+    .header1 h1{
+        font-size:45px;
     }
 
-    .header1 h2 {
-        font-size: 25px;
+    .header1 h2{
+        font-size:30px;
     }
 
-    .header1 h3 {
-        font-size: 15px;
+    .header2 h1{
+        font-size:45px;
     }
 
-    .elem {
-        width: 100%;
+    .allElem header{
+        height:auto;
+        padding:40px 20px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
     }
 
-    .todo-container {
-        flex-direction: column;
-        height: auto;
+    .elem{
+        width:calc(50% - 20px);
+        height:260px;
+    }
+
+    .todo-container{
+        flex-direction:column;
+        height:auto;
     }
 
     .todo-container .left,
-    .todo-container .right {
-        width: 100%;
+    .todo-container .right{
+        width:100%;
     }
-    
+
+    .goals-container{
+        flex-direction:column;
+        height:auto;
+    }
+
+    .goals-left,
+    .goals-right{
+        width:100%;
+    }
+
+    .moti-fullpage .motivation-container{
+        width:80%;
+    }
+
+}
+
+
+@media (max-width: 768px){
+
+    nav h1{
+        font-size:20px;
+    }
+
+    .header1 h1{
+        font-size:35px;
+    }
+
+    .header1 h2{
+        font-size:25px;
+    }
+
+    .header1 h3{
+        font-size:18px;
+    }
+
+    .header2 h1{
+        font-size:35px;
+    }
+
+    .elem{
+        width:100%;
+        height:230px;
+    }
+
+    .todo-container{
+        padding:20px;
+    }
+
+    #textarea{
+        height:180px;
+    }
+
+    .task{
+        font-size:18px;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .task h4{
+        width:100%;
+        font-size:18px;
+    }
+
+    .daily-fullpage .daily-container{
+        width:100%;
+        margin-left:0;
+        padding:15px;
+    }
+
+    .daily-fullpage .daily-container .input-section{
+        width:100%;
+    }
+
+    .daily-container .input-section input{
+        font-size:20px;
+    }
+
+    .motivation-container .quote h1{
+        font-size:28px;
+    }
+
+    .author h3{
+        font-size:22px;
+    }
+
+    .pomo-fullpage .pomo-timer h1{
+        font-size:80px;
+    }
+
+    .pomo-fullpage .pomo-timer button{
+        margin-top:10px;
+    }
+
+}
+
+
+@media (max-width: 480px){
+
+    section.allElem{
+        padding:15px;
+    }
+
+    .nav-in{
+        padding:0 10px;
+    }
+
+    .nav-in h1{
+        font-size:16px;
+    }
+
+    .header1 h1{
+        font-size:28px;
+    }
+
+    .header1 h2{
+        font-size:20px;
+    }
+
+    .header2 h1{
+        font-size:28px;
+    }
+
+    .pomo-fullpage .pomo-timer h1{
+        font-size:60px;
+    }
+
+    .circle-progress{
+        width:120px;
+        height:120px;
+    }
+
+    .circle-inner{
+        width:90px;
+        height:90px;
+    }
+
 }
